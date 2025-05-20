@@ -1,26 +1,53 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import filedialog, messagebox
 
-# Main window setup
-root = tk.Tk()
-root.title("Data Pulse – Company Data Analyzer")
-root.geometry("800x600")
-root.configure(bg="#1e1e2e")
+# [Keep all previous code from Part 1]
 
-# UI Elements
-title_label = tk.Label(root, text="📊 Data Pulse 📊", font=("Verdana", 32, "bold"), bg="#1e1e2e", fg="#ffffff")
-title_label.pack(pady=30)
+# Add these variables after root setup
+input_frame = tk.Frame(root, bg="#1e1e2e")
+manual_inputs = {}
 
-sub_label = tk.Label(root, text="Your Smart Company Data Visualizer", font=("Verdana", 14), bg="#1e1e2e", fg="#cccccc")
-sub_label.pack(pady=5)
+csv_frame = tk.Frame(root, bg="#1e1e2e")
+csv_file_path = tk.StringVar()
+browse_button = tk.Button(csv_frame, text="📑 Upload CSV", font=("Verdana", 12), command=lambda: None)
+file_label = tk.Label(csv_frame, text="No file selected", font=("Verdana", 12), bg="#1e1e2e", fg="white")
 
-analyze_button = tk.Button(root, text="📊 Analyze Company Data", font=("Verdana", 14),
-                         bg="#4CAF50", fg="white", activebackground="#45a049", width=25, height=2, bd=0,
-                         cursor="hand2")
-analyze_button.pack(pady=40)
+analyze_data_button = tk.Button(root, text="📈 Analyze Data", font=("Verdana", 14),
+                              bg="#2196F3", fg="white", activebackground="#1976D2",
+                              width=20, height=2, bd=0, cursor="hand2")
 
-footer_label = tk.Label(root, text="© 2025 Data Pulse by Himel Mir", font=("Verdana", 10),
-                      bg="#1e1e2e", fg="#555555")
-footer_label.pack(side="bottom", pady=10)
+visualize_data_button = tk.Button(root, text="📊 Visualize Data", font=("Verdana", 14),
+                                bg="#FF9800", fg="white", activebackground="#FB8C00",
+                                width=20, height=2, bd=0, cursor="hand2")
+
+# Add these functions
+def browse_csv():
+    global csv_file_path
+    file_path = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])
+    if file_path:
+        csv_file_path.set(file_path)
+        file_label.config(text=f"Selected: {file_path.split('/')[-1]}")
+
+def show_analysis_options():
+    title_label.pack_forget()
+    sub_label.pack_forget()
+    analyze_button.pack_forget()
+    footer_label.pack_forget()
+
+    # Show Manual Input Section
+    input_frame.pack(pady=10)
+    
+    # Show CSV Upload Section
+    csv_frame.pack(pady=20)
+    browse_button.pack(side="left", padx=5)
+    file_label.pack(side="left", padx=5)
+    
+    # Show Analyze Data and Visualize Data buttons
+    analyze_data_button.pack(pady=20)
+    visualize_data_button.pack(pady=10)
+
+# Connect the buttons
+analyze_button.config(command=show_analysis_options)
+browse_button.config(command=browse_csv)
 
 root.mainloop()
