@@ -41,7 +41,7 @@ Made for SDP 2 to practice Python GUI development, data handling, and basic data
 
 ---
 
-## Sample Screenshot of the App:
+## 🖼️ Sample Screenshot of the App:
 
 ![Home Screenshot](https://i.ibb.co/bgWrzqgB/Screenshot-2025-05-28-143506.png)
 ![Input Field](https://i.ibb.co/ns83f4fv/Screenshot-2025-05-28-141344.png)
