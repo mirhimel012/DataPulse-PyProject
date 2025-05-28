@@ -40,3 +40,8 @@ Made for SDP 2 to practice Python GUI development, data handling, and basic data
   `tkinter`, `pandas`, `matplotlib`
 
 ---
+
+## Sample Screenshot of the App:
+
+![Home Screenshot](https://i.ibb.co/G4qphMXy/Screenshot-2025-05-28-141322.png)
+
